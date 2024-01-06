@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-web-app-deployment
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: php-web-app
+  template:
+    metadata:
+      labels:
+        app: php-web-app
+    spec:
+      containers:
+      - name: php-web-app-container
+        image: web-app:latest
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 5
+      maxUnavailable: 2
