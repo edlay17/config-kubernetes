@@ -12,9 +12,15 @@ spec:
         spec:
           restartPolicy: Never
           serviceAccountName: gitops
+          hostNetwork: true
           containers:
             - name: zad2gitops 
               image: ed358/zad2gitops:latest
-              command: [sh, -e, -c]
-              args:
-                - git clone https://github.com/edlay17/config-kubernetes /tmp && find /tmp -name 'deployment.yaml' -exec kubectl apply -f {} \
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  git clone https://github.com/edlay17/config-kubernetes.git /temp
+                  kubectl apply -f /temp/deployment.yaml
+                  kubectl apply -f /temp/ingress.yaml  
+                  kubectl apply -f /temp/service.yaml
