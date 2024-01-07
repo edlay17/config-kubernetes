@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: php-web-app-container
-        image: ed358/web-app:v1.0.33
+        image: ed358/web-app:v1.0.40
   strategy:
     type: RollingUpdate
     rollingUpdate:
