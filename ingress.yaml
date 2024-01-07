@@ -4,13 +4,13 @@ metadata:
   name: php-web-app-ingress
 spec:
   rules:
-  - host: your-app-domain.com
+  - host: zad2.lab
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: my-app-service
+            name: php-web-app-service
             port:
               number: 80
